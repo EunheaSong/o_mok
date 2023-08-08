@@ -1,12 +1,13 @@
 package com.toy_project.o_mok.user.domain;
 
 import com.toy_project.o_mok.common.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import com.toy_project.o_mok.play.domain.OMokRoom;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
@@ -31,5 +32,13 @@ public class User extends BaseEntity {
 
     @Column
     private int loseCount = 0;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn()
+    private List<OMokRoom> hostRoomList;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn()
+    private List<OMokRoom> ParticipantRoomList;
 
 }
