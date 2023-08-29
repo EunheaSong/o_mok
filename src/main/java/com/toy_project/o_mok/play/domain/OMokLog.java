@@ -7,8 +7,10 @@ import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Comment;
 import org.hibernate.annotations.Type;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 
 @Getter
@@ -18,9 +20,18 @@ import java.util.Arrays;
 public class OMokLog {
 
     @Id
-    private String id; // 방장 id + room id + 참가자 id
+    private String id;
+
+    @Column
+    @Comment("OMokRoomId")
+    private String oMokRoomId;
 
     @Type(JsonType.class)
     @Column(columnDefinition = "longtext")
+    @Comment("게임방 내역")
     private Arrays boardHistory;
+
+    @Column(columnDefinition = "OMokRoomId")
+    @Comment("생성일")
+    private LocalDateTime createDateTime;
 }
