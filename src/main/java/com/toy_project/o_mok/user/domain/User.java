@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Comment;
 
 import java.util.List;
 
@@ -32,6 +33,10 @@ public class User extends BaseEntity {
 
     @Column
     private int loseCount = 0;
+
+    @Column
+    @Comment("승률")
+    private double oddsOfWinning = 0.0;
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn()

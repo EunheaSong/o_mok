@@ -26,7 +26,7 @@ public class OMokLog {
     @Comment("OMokRoomId")
     private String oMokRoomId;
 
-    @Type(JsonType.class)
+    @Type(J)
     @Column(columnDefinition = "longtext")
     @Comment("게임방 내역")
     private Arrays boardHistory;
